@@ -1,3 +1,4 @@
+```
 eval $(minikube docker-env)
 docker build -t deno-health .
 helm install prometheus prometheus-community/kube-prometheus-stack
@@ -12,4 +13,4 @@ kubectl port-forward deno-health-5dbcd97f5-qzvtw 8002:8000
 
 # mark second pod as unhealth
 curl localhost:8002/health -v -X POST -d '503'
-
+```
