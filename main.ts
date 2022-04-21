@@ -16,7 +16,7 @@ const healthRouter = new Router()
     ctx.response.status = healthStatus;
   })
   .post("/health", async (ctx) => {
-    const body = ctx.request.body({type: "text"});
+    const body = ctx.request.body({ type: "text" });
     const bodyText = await body.value;
     healthStatus = parseInt(bodyText, 10);
     ctx.response.body = `Health endpoint will return ${healthStatus}`;
@@ -35,8 +35,7 @@ const metricsRouter = new Router()
   .get("/metrics", (ctx) => {
     ctx.response.headers.set("Content-Type", "");
     ctx.response.body = Registry.default.metrics();
-  })
-;
+  });
 
 app.use(metricsRouter.routes());
 app.use(healthRouter.routes());
